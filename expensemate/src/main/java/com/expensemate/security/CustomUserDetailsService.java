@@ -1,5 +1,8 @@
 package com.expensemate.security;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
@@ -28,4 +31,19 @@ public class CustomUserDetailsService implements UserDetailsService{
             .authorities("USER") // You can customize roles later
             .build();
     }
+	
+//	@Override
+//	public UserDetails loadUserByUsernamew(String name) throws UsernameNotFoundException {
+//	    User user = userRepository.findByEmail(name)
+//	            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+//
+//	    System.out.println("Loaded user password (encoded): " + user.getPassword());
+//
+//	    return new org.springframework.security.core.userdetails.User(
+//	            user.getName(),
+//	            user.getPassword(),
+//	            Collections.emptyList()
+//	    );
+//	}
+
 }

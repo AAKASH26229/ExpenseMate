@@ -67,11 +67,16 @@ public class JwtUtil {
 	}
 	
 	private Claims extractAllClaims(String token) {
-		return Jwts.parserBuilder()
-				.setSigningKey(secretKey)
-				.build()
-				.parseClaimsJws(token)
-				.getBody();
+		try {
+			return Jwts.parserBuilder()
+					.setSigningKey(secretKey)
+					.build()
+					.parseClaimsJws(token)
+					.getBody();
+		}catch(ExpiredJwtException e) {
+			return e.getClaims();
+		}
+		
 	}
 	
 }
